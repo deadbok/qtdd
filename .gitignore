@@ -1,0 +1,9 @@
+*.pyc
+build
+dist
+.project
+.pydevproject
+qtdd.egg-info
+qtdd.py.bak
+.settings
+

@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+'''
+The main qtdd executable.
+'''
+import os
+import subprocess
+import sys
+
+from PyQt5.QtWidgets import QApplication, QDialog
+from qtdd import MainDialog
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = MainDialog()
+    if window.exec() == QDialog.Accepted:
+        try:
+            image_size = os.path.getsize(window.isoPath.text())
+            print('Image size: ' + str(image_size))
+
+            target_path = window.usbDeviceSelect.currentText().split(' ')[0]
+            print("Target path: " + target_path)
+            print('Running terminal and write command.')
+            dd_cmd = ['xterm', '-title','Writing image, done when the windows closes.','-e',
+                      'dd if=' + window.isoPath.text() + ' | pv --size=' +
+                      str(image_size) + ' | sudo dd of=' + target_path +
+                      ' bs=1M']
+
+            dd = subprocess.run(dd_cmd)
+        except Exception as exception:
+            print(str(exception))
+            app.quit()
+            sys.exit(1)
+
+    app.quit()
+    sys.exit(0)
