@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # qtdd setup.py
 from setuptools import setup, find_packages
 from qtdd import _version_
@@ -11,7 +12,7 @@ setup(
     name="qtdd",
     scripts=['scripts/qtdd'],
     include_package_data=True,
-    package_data = {"qtdd": ["ui/*"]},
+    package_data={"qtdd": ["ui/*"]},
     packages=find_packages(),
     version=_version_,
     description="QT frontend to dd, to write a disk image to an USB mass storage device.",

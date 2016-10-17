@@ -1,0 +1,9 @@
+Package: qtdd
+Version: 0.0.4
+Section: admin
+Priority: optional
+Architecture: all
+Depends: python3, dd, pv, xterm, sudo
+Maintainer: Martin Grønholdt <martin.groenholdt@gmail.com>
+Description: QT front end for writing disk images to USB mass storage devices using dd and pv.
+
